@@ -1,0 +1,29 @@
+FROM gemstone-base:latest
+
+ARG BARCH=x86_64
+
+ARG BBRANCH=master
+
+ENV BUILD_ARCH=$BARCH
+
+ENV GIT_BRANCH=$BBRANCH
+
+ENV PACKAGE_ALL=yes
+
+WORKDIR /root
+
+RUN git clone --branch $GIT_BRANCH https://github.com/project-gemstone/quarry.git
+
+RUN git clone https://github.com/project-gemstone/scratchpkg.git && cd scratchpkg && make install
+
+WORKDIR /root/quarry
+
+RUN chmod +x utils/* && cp utils/* /usr/local/bin
+
+RUN wget https://files.jlab.space/gemstone/$BARCH/rootfs/rootfs-stage1.tar.gz
+
+RUN mkdir -p /root/quarry/rootfs
+
+RUN tar -xvf ./rootfs-stage1.tar.gz -C /root/quarry/rootfs
+
+ENTRYPOINT ["/bin/bash", "-c"]
