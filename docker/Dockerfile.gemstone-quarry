@@ -4,15 +4,19 @@ ARG BARCH=x86_64
 
 ARG BBRANCH=master
 
+ARG BPKG_SYS=
+
 ENV BUILD_ARCH=$BARCH
 
 ENV GIT_BRANCH=$BBRANCH
+
+ENV BUILD_PKG_SYS=$BPKG_SYS
 
 ENV PACKAGE_ALL=yes
 
 WORKDIR /root
 
-RUN git clone https://github.com/project-gemstone/scratchpkg.git && cd scratchpkg && make install
+RUN git clone $BUILD_PKG_SYS pkgsys && cd pkgsys && make install
 
 RUN git clone --branch $GIT_BRANCH https://github.com/project-gemstone/quarry.git
 
