@@ -4,7 +4,7 @@ ARG BARCH=x86_64
 
 ARG BBRANCH=master
 
-ARG BPKG_SYS=
+ARG BPKG_SYS=https://github.com/project-gemstone/scratchpkg
 
 ENV BUILD_ARCH=$BARCH
 
