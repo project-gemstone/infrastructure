@@ -16,7 +16,7 @@ ENV PACKAGE_ALL=yes
 
 WORKDIR /root
 
-RUN git clone $BUILD_PKG_SYS pkgsys && cd pkgsys && make install
+RUN git clone $BUILD_PKG_SYS pkgsys && cd pkgsys && ls && make install
 
 RUN git clone --branch $GIT_BRANCH https://github.com/project-gemstone/quarry.git
 
