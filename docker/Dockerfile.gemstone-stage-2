@@ -26,4 +26,4 @@ RUN mkdir -p /root/quarry/rootfs
 
 RUN tar -xvf ./rootfs-stage1.tar.gz -C /root/quarry/rootfs
 
-ENTRYPOINT ["/bin/bash", "-c"]
+ENTRYPOINT ["/usr/local/bin/base-entry.sh"]
