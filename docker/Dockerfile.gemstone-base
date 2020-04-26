@@ -10,7 +10,9 @@ RUN apt-get install qemu qemu-user-static build-essential pkg-config libarchive-
 
 RUN apt-get install vim nano tree -y
 
-RUN mount binfmt_misc -t binfmt_misc /proc/sys/fs/binfmt_misc/
+COPY scripts/base-entry.sh /usr/local/bin
+
+RUN chmod +x /usr/local/bin/*
 
 RUN ln -sv /usr/bin/python3 /usr/bin/python
 
