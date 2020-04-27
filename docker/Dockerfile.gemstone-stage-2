@@ -30,4 +30,4 @@ ENTRYPOINT ["/bin/bash", "-c"]
 
 CMD mount binfmt_misc -t binfmt_misc /proc/sys/fs/binfmt_misc/
 
-ENTRYPOINT ["/usr/local/bin/base-entry.sh"]
+ENTRYPOINT ["/bin/bash", "-c"]
